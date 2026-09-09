@@ -1,0 +1,30 @@
+{
+  "version": 1,
+  "author": "Reza Aurelia Saputri",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "board-esp32-devkit-c-v4", "id": "esp", "top": 100, "left": 0, "attrs": {} },
+    { "type": "wokwi-dht11", "id": "dht1", "top": -80, "left": 180, "attrs": {} },
+    { "type": "wokwi-photoresistor-sensor", "id": "ldr1", "top": -80, "left": -180, "attrs": {} },
+    { "type": "wokwi-relay-module", "id": "relay1", "top": 120, "left": -220, "attrs": {} },
+    { "type": "wokwi-led", "id": "led1", "top": 150, "left": 220, "attrs": { "color": "red" } },
+    { "type": "wokwi-resistor", "id": "r1", "top": 210, "left": 150, "attrs": { "value": "220" } }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "esp:GND.1", "dht1:GND", "black", [] ],
+    [ "esp:3V3", "dht1:VCC", "red", [] ],
+    [ "esp:13", "dht1:SDA", "blue", [] ],
+    [ "esp:GND.1", "ldr1:GND", "black", [] ],
+    [ "esp:3V3", "ldr1:VCC", "red", [] ],
+    [ "esp:34", "ldr1:AO", "green", [] ],
+    [ "esp:GND.1", "relay1:GND", "black", [] ],
+    [ "esp:5V", "relay1:VCC", "red", [] ],
+    [ "esp:12", "relay1:IN", "orange", [] ],
+    [ "esp:5", "r1:1", "purple", [] ],
+    [ "r1:2", "led1:A", "purple", [] ],
+    [ "esp:GND.1", "led1:C", "black", [] ]
+  ],
+  "dependencies": {}
+}
